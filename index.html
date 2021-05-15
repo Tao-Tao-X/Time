@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/index.min.js"></script>
+</head>
+<body>
+  <div id="box">
+    <div class="year"><span></span></div>
+    <div class="month"></div>
+    <div class="day"></div>
+    <div class="wark"></div>
+    <div class="hour"></div>
+    <div class="miu"></div>
+    <div class="miao"></div>
+  </div>
+  <h1>路还长</h1>
+  <h1>怎能放弃奔跑</h1>
+  <script>
+    var gettime=new Date();
+    var year=gettime.getFullYear(),
+        month=gettime.getMonth()+1,
+        day=gettime.getDate(),
+        werk=gettime.getDay(),
+        hour=gettime.getHours(),
+        miuntes=gettime.getMinutes(),
+        miao=gettime.getSeconds();
+    var WW=['日','一','二','三','四','五','六'];
+    var MM=[31,28,31,30,31,30,31,31,30,31,30,31];
+    if(year%4==0||year%400==0){
+      MM[1]=29;
+    }
+    var Time=document.querySelector('#box').querySelectorAll('div');
+    //年份
+    Time[0].querySelector('span').innerHTML=year;
+    //创建月
+    for(let i=1;i<=12;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML=i+'月';
+      Time[1].appendChild(ctmonth);
+    }
+    //创建日份
+    var temp=MM[month-1]
+    for(let i=1;i<=temp;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML=i+'日';
+      Time[2].appendChild(ctmonth);
+    }
+    // 创建周
+    for(let i=0;i<7;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML='星期'+WW[i];
+      Time[3].appendChild(ctmonth);
+    }
+    // 创建时
+    for(let i=1;i<=24;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML=i+'时';
+      Time[4].appendChild(ctmonth);
+    }
+    //创建分
+    for(let i=1;i<=60;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML=i+'分';
+      Time[5].appendChild(ctmonth);
+    }
+    //创建秒
+    for(let i=1;i<=60;i++){
+      var ctmonth=document.createElement('span');
+      ctmonth.innerHTML=i+'秒';
+      Time[6].appendChild(ctmonth);
+    }
+    setTimeout(() => {
+        //月样式
+      for(let i=1;i<12;i++){
+        Time[1].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/12)*i)+"deg)";
+      }
+    }, 0);
+    setTimeout(() => {
+       // 日
+       for(let i=1;i<temp;i++){
+        Time[2].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/temp)*i)+"deg)";
+      }
+    }, 500);
+    setTimeout(() => {
+      //星期
+      for(let i=1;i<7;i++){
+        Time[3].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/7)*i)+"deg)";
+      }
+    }, 1000); 
+    setTimeout(() => {
+      // 时
+      for(let i=1;i<24;i++){
+        Time[4].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/24)*i)+"deg)";
+      }
+    }, 1500);
+    setTimeout(() => {
+      //分秒
+      for(let i=1;i<60;i++){
+        Time[5].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/60)*i)+"deg)";
+      }
+    }, 2000);
+    setTimeout(() => {
+      //分秒
+      for(let i=1;i<60;i++){
+        Time[6].querySelectorAll('span')[i].style.transform= "rotate(-"+((360/60)*i)+"deg)";
+      }
+    }, 2500);
+    
+    // 时钟的运动
+    setInterval(() => {
+      var gettime=new Date();
+      var year=gettime.getFullYear(),
+          month=gettime.getMonth()+1,
+          day=gettime.getDate(),
+          werk=gettime.getDay(),
+          hour=gettime.getHours(),
+          miuntes=gettime.getMinutes(),
+          miao=gettime.getSeconds();
+      Time[6].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*miao)+"deg)";
+      Time[5].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*miuntes)+"deg)";
+      Time[4].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/24)*hour)+"deg)";
+      Time[3].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/7)*werk)+"deg)";
+      Time[2].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/temp)*day)+"deg)";
+      Time[1].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/12)*month)+"deg)";
+    }, 1000);
+
+  </script>
+</body>
+</html>
