@@ -121,12 +121,12 @@
           hour=gettime.getHours(),
           miuntes=gettime.getMinutes(),
           miao=gettime.getSeconds();
-      Time[6].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*miao)+"deg)";
-      Time[5].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*miuntes)+"deg)";
-      Time[4].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/24)*hour)+"deg)";
+      Time[6].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*(miao-1))+"deg)";
+      Time[5].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/60)*(miuntes-1))+"deg)";
+      Time[4].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/24)*(hour-1))+"deg)";
       Time[3].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/7)*werk)+"deg)";
-      Time[2].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/temp)*day)+"deg)";
-      Time[1].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/12)*month)+"deg)";
+      Time[2].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/temp)*(day-1))+"deg)";
+      Time[1].style.transform= " translateX(-50%) translateY(-50%) rotate("+((360/12)*(month-1))+"deg)";
     }, 1000);
 
   </script>
